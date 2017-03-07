@@ -70,32 +70,6 @@ public class BallController : MonoBehaviour {
                 }
              
             }
-            //else
-            //{
-            //    if (rb.velocity.x > 0f && rb.velocity.x != 5f)
-            //    {
-            //        speed.x = -5f;
-            //        rb.velocity = new Vector2(speed.x, rb.velocity.y);
-            //    }
-            //    if (rb.velocity.x < 0f && rb.velocity.x != -5f)
-            //    {
-            //        speed.x = -5f;
-            //        rb.velocity = new Vector2(speed.x, rb.velocity.y);
-            //    }
-
-            //    if (rb.velocity.y > 0f && rb.velocity.y != 5f)
-            //    {
-            //        speed.y = 5f;
-            //        rb.velocity = new Vector2(rb.velocity.x, speed.y);
-            //    }
-            //    if (rb.velocity.y < 0f && rb.velocity.y != -5f)
-            //    {
-            //        speed.y = -5f;
-            //        rb.velocity = new Vector2(rb.velocity.x, speed.y);
-            //    }
-            //}
-            
-           
         }
 
 
@@ -118,5 +92,27 @@ public class BallController : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D hit)
     {      
             ballBounce.Play();
+        if (hit.gameObject.name == "Left" || hit.gameObject.name == "Right")
+        {
+            if (rb.velocity.x > 0f && rb.velocity.x != 5f)
+            {
+                rb.velocity = new Vector2(5f, rb.velocity.y);
+            }
+            if (rb.velocity.x < 0f && rb.velocity.x != -5f)
+            {
+                rb.velocity = new Vector2(-5f, rb.velocity.y);
+            }
+
+            if (rb.velocity.y > 0f && rb.velocity.y != 5f)
+            {
+                
+                rb.velocity = new Vector2(rb.velocity.x, 5f);
+            }
+            if (rb.velocity.y < 0f && rb.velocity.y != -5f)
+            {
+                
+                rb.velocity = new Vector2(rb.velocity.x, -5f);
+            }
+        }
     }
 }
